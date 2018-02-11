@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>圆.eg</title>
+</head>
+<body>
+		<div>
+			<!-- <canvas id="" style="width:100px;height:100px;">
+				
+			</canvas> -->
+			<canvas id="doraemon" width="400" height="600"></canvas>
+			<div id="put" style="width: 50px" height="20px"></div>
+		</div>
+		<script type="text/javascript">
+			function zuobiao(event){
+				var x = event.clientx;
+				var y = event.clienty;
+				var out = document.getElementsById('put');
+				out.innerHTML = "x:"+ x + "y:"+ y;
+			}
+
+			var c=document.getElementById("doraemon");
+			var ctx=c.getContext("2d");
+			ctx.beginPath();	//起始路径
+			ctx.lineWidth = 1;	//线宽度为1
+			ctx.strokeStyle = "#000";	//笔触的颜色
+			ctx.arc(200,175,175,0.7*Math.PI,0.3*Math.PI);//绘制弧线，中心点（200,175），半径175
+			ctx.fillStyle = "#0bb0da"; 	//设置填充时的颜色
+			ctx.fill();	//填充颜色
+			ctx.stroke();	//绘制路径
+
+			//脸部
+			ctx.beginPath();
+			ctx.fillStyle = '#fff';
+			ctx.moveTo(110,110);//将路径移到点(110,110),不创建线条
+			ctx.quadraticCurveTo(-10,200,120,315);//创建二次贝塞尔的曲线控制点(-10,200),结束点(120,315)
+			ctx.lineTo(280,315);//添加一个新点，然后在画布中创建从(110,110)到(280,315)的线条
+			ctx.quadraticCurveTo(410,210,290,110);
+			ctx.lineTo(110,110);
+			ctx.fill();
+			ctx.stroke();
+
+			//绘制眼睛
+			ctx.beginPath();
+			ctx.lineWidth = 1;
+			ctx.fillStyle = '#fff';
+			ctx.moveTo(110,110);
+			ctx.bezierCurveTo(110, 25,200, 25,200,100);//创建三次贝塞尔曲线,控制点1(110,25),控制点2(200,25),结束点(200,100),也就是画左上半椭圆。
+			ctx.bezierCurveTo(200,175,110,175,110,100);
+			ctx.moveTo(200,100);
+			ctx.bezierCurveTo(200,25,290,25,290,100);
+			ctx.bezierCurveTo(290,175,200,175,200,100);
+			ctx.fill();
+			ctx.stroke();
+			//左右眼球
+			//右眼球
+			ctx.beginPath();
+			ctx.fillStyle = '#000';
+			ctx.arc(230,130,12,0,2*Math.PI);
+			ctx.fill();
+			ctx.stroke();
+			//左眼球
+			ctx.beginPath();
+			ctx.fillStyle = '#000';
+			ctx.arc(170,130,12,0,2*Math.PI);
+			ctx.fill();
+			ctx.stroke();
+			//鼻子
+			ctx.beginPath();
+			ctx.arc(200,165,25,0,2*Math.PI);
+			ctx.fillStyle = '#d05823';
+			ctx.fill();
+			ctx.stroke();
+			//左胡须
+			ctx.beginPath();
+			ctx.moveTo(80,175);
+			ctx.lineTo(150,195);
+			ctx.moveTo(80,200);
+			ctx.lineTo(150,205);
+			ctx.moveTo(80,225);
+			ctx.lineTo(150,215);
+			//中部胡须
+			ctx.moveTo(200,195);
+			ctx.lineTo(200,290);
+			//右边胡须
+			ctx.moveTo(250,195);
+			ctx.lineTo(320,175);
+			ctx.moveTo(250,205);
+			ctx.lineTo(320,200);
+			ctx.moveTo(250,215);
+			ctx.lineTo(320,225);
+			ctx.stroke();
+			//嘴巴
+			ctx.moveTo(80,240);
+			ctx.quadraticCurveTo(200,350,320,240);
+			ctx.stroke();
+			//画围巾
+			ctx.beginPath();
+			ctx.moveTo(96,316);
+			ctx.lineTo(305,316);
+			ctx.lineTo(320,316);
+			ctx.arcTo(330,316,330,326,10);//在画布上创建介于两个切线之间的弧，起点坐标为(330,316),终点坐标为(330,326),半径为10
+			ctx.lineTo(330,336);
+			ctx.arcTo(330,346,305,346,10);
+			ctx.lineTo(81,346);
+			ctx.arcTo(71,346,71,336,10);
+			ctx.lineTo(71,326);
+			ctx.arcTo(71,316,81,316,10);
+			ctx.lineTo(96,316);
+			ctx.fillStyle = "#b13209";
+			ctx.fill();
+			ctx.stroke();
+			//画衣服
+
+			ctx.beginPath();
+			ctx.fillStyle = '#0bb0da';
+			ctx.moveTo(80,346);
+			// 左衣服
+			ctx.lineTo(26,406);
+			ctx.lineTo(65,440);
+			ctx.lineTo(85,418);
+			ctx.lineTo(85,528);
+			ctx.lineTo(185,528);
+			//右衣服
+			ctx.lineTo(315,528);
+			ctx.lineTo(315,418);
+			ctx.lineTo(337,440);
+			ctx.lineTo(374,406);
+			ctx.lineTo(320,346);
+			ctx.fill();
+			ctx.stroke();
+
+			//左手
+			ctx.beginPath();
+			ctx.fillStyle = '#fff';
+			ctx.arc(37,433,30,0,2*Math.PI);
+			ctx.fill();
+			ctx.stroke();
+			//右手
+			ctx.beginPath();
+			ctx.fillStyle = '#fff';
+			ctx.arc(363,433,30,0,2*Math.PI);
+			ctx.fill();
+			ctx.stroke();
+			//肚子
+			ctx.beginPath();
+			ctx.fillStyle = '#fff';
+			ctx.arc(200,400,91,1.8*Math.PI,1.2*Math.PI);
+			ctx.fill();
+			ctx.stroke();
+			//口袋
+			ctx.beginPath();
+			ctx.fillStyle = '#fff';
+			ctx.moveTo(130,394);
+			ctx.lineTo(270,394);
+			ctx.moveTo(130,394);
+			ctx.bezierCurveTo(130,490,270,490,270,394);
+			ctx.fill();
+			ctx.stroke();
+			//脚的空隙
+			ctx.beginPath();
+			ctx.fillStyle = '#fff';
+			ctx.arc(200,529,20,Math.PI,0);
+			ctx.fill();
+			ctx.stroke();
+			// 脚
+			//左脚
+			ctx.beginPath();
+			ctx.fillStyle = '#fff';
+			ctx.moveTo(180,528);
+			ctx.lineTo(72,528);
+			ctx.bezierCurveTo(52,528,52,558,72,558);
+			ctx.lineTo(180,558);
+			ctx.moveTo(180,558);
+			ctx.bezierCurveTo(200,558,200,528,180,528);
+			ctx.fill();
+			ctx.stroke();
+			// 右脚
+			ctx.beginPath();
+			ctx.fillStyle = '#fff';
+			ctx.moveTo(220,528);
+			ctx.lineTo(328,528);
+			ctx.bezierCurveTo(348,528,348,558,328,558);
+			ctx.lineTo(220,558);
+			ctx.moveTo(220,558);
+			ctx.bezierCurveTo(200,558,200,528,220,528);
+			ctx.fill();
+			ctx.stroke();
+		</script>
+
+</body>
+</html>
